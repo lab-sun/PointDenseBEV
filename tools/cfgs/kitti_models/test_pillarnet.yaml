@@ -1,0 +1,102 @@
+CLASS_NAMES: ['car','truck', 'construction_vehicle', 'bus', 'trailer',
+              'barrier', 'motorcycle', 'bicycle', 'pedestrian', 'traffic_cone']
+
+DATA_CONFIG:
+    _BASE_CONFIG_: ./tools/cfgs/dataset_configs/kitti_dataset.yaml
+
+    POINT_CLOUD_RANGE: [-50.0, -25.0, -2.5, 50.0, 25.0, 1.5]
+    DATA_PROCESSOR:
+        -   NAME: mask_points_and_boxes_outside_range
+            REMOVE_OUTSIDE_BOXES: True
+
+        -   NAME: shuffle_points
+            SHUFFLE_ENABLED: {
+                'train': True,
+                'test': True
+            }
+
+        -   NAME: transform_points_to_voxels
+            VOXEL_SIZE: [0.1, 0.1, 0.5]  # 更改voxels大小
+            # 修改z之后需要在 data_processor.py 里修改 grid_size 大小
+            MAX_POINTS_PER_VOXEL: 10
+            MAX_NUMBER_OF_VOXELS: {
+                'train': 50000, # 60000 30000 # 另一个服务器是5w
+                'test': 50000
+            }
+
+
+    DATA_AUGMENTOR:
+        DISABLE_AUG_LIST: ['placeholder', 'gt_sampling']
+        AUG_CONFIG_LIST:
+            - NAME: random_world_flip
+              ALONG_AXIS_LIST: ['x', 'y']
+
+            - NAME: random_world_rotation
+              WORLD_ROT_ANGLE: [-0.78539816, 0.78539816]
+
+            - NAME: random_world_scaling
+              WORLD_SCALE_RANGE: [0.95, 1.05]
+
+            - NAME: random_world_translation
+              WORLD_TRANSLATE_RANGE: [5.0, 5.0, 0.05]
+
+MODEL:
+    NAME: PointPillar
+
+    VFE:
+        NAME: PillarVFE
+        WITH_DISTANCE: False
+        USE_ABSLOTE_XYZ: True
+        USE_NORM: True
+        NUM_FILTERS: [64]
+
+    MAP_TO_BEV:
+        NAME: PointPillarScatter
+        NUM_BEV_FEATURES: 64
+        VOXEL_DIM_NUM: [1000, 500, 8] # self.nx, self.ny, self.nz
+
+# OPTIMIZATION:
+#     BATCH_SIZE_PER_GPU: 1
+#     NUM_EPOCHS: 20
+
+#     OPTIMIZER: adam_onecycle
+#     LR: 0.001  # lr_max 0.001
+#     WEIGHT_DECAY: 0.01
+#     MOMENTUM: 0.9
+
+#     MOMS: [0.95, 0.85]
+#     PCT_START: 0.1 # 衰减点
+#     DIV_FACTOR: 10 # low_lr = LR / DIR_FACTOR
+#     DECAY_STEP_LIST: [5, 10, 15, 20, 25, 30]
+#     LR_DECAY: 0.1
+#     LR_CLIP: 0.0000001
+
+#     LR_WARMUP: False
+#     WARMUP_EPOCH: 1
+
+#     GRAD_NORM_CLIP: 10
+
+# 训练用
+OPTIMIZATION:
+    BATCH_SIZE_PER_GPU: 1
+    NUM_EPOCHS: 20
+    OPTIMIZER: OneCycle_with_WarmupLR # adamW_with_WarmupLR_cosdecay OneCycle_with_WarmupLR
+    LR: 0.003 # 0.001max AdamW*0.3设为0.0003 重启*0.8
+    WEIGHT_DECAY: 0.001  # 0.0005 AdamW设为0.0005 重启0.001
+    MOMENTUM: 0.9
+
+    MOMS: [0.95, 0.85]
+    PCT_START: 0.1 # 衰减点
+    DIV_FACTOR: 10
+    DECAY_STEP_LIST: [4, 8, 12, 16, 20] # [5, 10, 15, 20, 25, 30]
+    LR_DECAY: 0.1
+    LR_CLIP: 0.0000001 #1e-7
+
+    LR_WARMUP: True
+    WARMUP_EPOCH: 1
+    GRAD_NORM_CLIP: 10
+
+    # for AdamW
+    BETA1: 0.9
+    BETA2: 0.999
+    EPS: 0.00000001 #1e-8
