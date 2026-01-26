@@ -1,5 +1,9 @@
 # Dense Semantic Bird’s-Eye-View Map Generation from Sparse LiDAR Point Clouds via Distribution-Aware Feature Fusion
 
+The project will continue to be refined in the near future, including environment mirroring, data preprocessing, and weighting results. This demonstration video:
+
+[![PointDenseBEV](https://img.youtube.com/vi/hv8dzhZIFgk/0.jpg)](https://youtu.be/hv8dzhZIFgk)
+
 We propose **PointDenseBEV**, an end-to-end, distribution-aware feature fusion framework. It takes sparse LiDAR point clouds as input and directly generates dense semantic BEV maps. Spatial geometric information and temporal context are embedded as auxiliary semantic cues within the BEV grid representation to improve semantic density. Extensive experiments on the **SemanticKITTI** dataset demonstrate that our method achieves competitive performance compared with existing approaches.
 
 This project is built on top of **OpenPCDet**: https://github.com/open-mmlab/OpenPCDet.
