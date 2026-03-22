@@ -1,0 +1,8 @@
+numpy
+numba
+tensorboardX
+easydict
+pyyaml
+scikit-image
+tqdm
+transformers>=4.26.0

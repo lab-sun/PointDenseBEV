@@ -1,0 +1,3 @@
+/home/Projects/MASS/voxelize/CMakeFiles/rebuild_cache.dir
+/home/Projects/MASS/voxelize/CMakeFiles/dense.dir
+/home/Projects/MASS/voxelize/CMakeFiles/edit_cache.dir

@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC -Wall -Wextra -O3 -flto -shared  -o dense.cpython-37m-x86_64-linux-gnu.so CMakeFiles/dense.dir/dense.cpp.o 
