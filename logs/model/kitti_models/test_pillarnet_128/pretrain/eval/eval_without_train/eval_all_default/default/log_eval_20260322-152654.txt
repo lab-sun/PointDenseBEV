@@ -1,0 +1,110 @@
+2026-03-22 15:26:54,539   INFO  **********************Start logging**********************
+2026-03-22 15:26:54,539   INFO  CUDA_VISIBLE_DEVICES=7
+2026-03-22 15:26:54,539   INFO  cfg_file         ./tools/cfgs/kitti_models/test_pillarnet_128.yaml
+2026-03-22 15:26:54,539   INFO  batch_size       1
+2026-03-22 15:26:54,539   INFO  workers          4
+2026-03-22 15:26:54,539   INFO  extra_tag        128_3e3_freqweight
+2026-03-22 15:26:54,539   INFO  ckpt             None
+2026-03-22 15:26:54,539   INFO  launcher         none
+2026-03-22 15:26:54,539   INFO  tcp_port         18888
+2026-03-22 15:26:54,539   INFO  local_rank       0
+2026-03-22 15:26:54,539   INFO  set_cfgs         None
+2026-03-22 15:26:54,539   INFO  max_waiting_mins 10
+2026-03-22 15:26:54,539   INFO  start_epoch      10
+2026-03-22 15:26:54,539   INFO  eval_tag         default
+2026-03-22 15:26:54,539   INFO  eval_all         True
+2026-03-22 15:26:54,539   INFO  ckpt_dir         None
+2026-03-22 15:26:54,540   INFO  save_to_file     False
+2026-03-22 15:26:54,540   INFO  cfg.ROOT_DIR: /home/Projects/DensePillar/logs/model
+2026-03-22 15:26:54,540   INFO  cfg.LOCAL_RANK: 0
+2026-03-22 15:26:54,540   INFO  cfg.CLASS_NAMES: ['car', 'truck', 'construction_vehicle', 'bus', 'trailer', 'barrier', 'motorcycle', 'bicycle', 'pedestrian', 'traffic_cone']
+2026-03-22 15:26:54,540   INFO  
+cfg.DATA_CONFIG = edict()
+2026-03-22 15:26:54,540   INFO  cfg.DATA_CONFIG.DATASET: DatasetTemplate
+2026-03-22 15:26:54,540   INFO  cfg.DATA_CONFIG.DATA_PATH: ../../data_new/
+2026-03-22 15:26:54,540   INFO  cfg.DATA_CONFIG.VERSION: v1.0-trainval
+2026-03-22 15:26:54,540   INFO  cfg.DATA_CONFIG.MAX_SWEEPS: 1
+2026-03-22 15:26:54,540   INFO  cfg.DATA_CONFIG.PRED_VELOCITY: True
+2026-03-22 15:26:54,540   INFO  cfg.DATA_CONFIG.SET_NAN_VELOCITY_TO_ZEROS: True
+2026-03-22 15:26:54,540   INFO  cfg.DATA_CONFIG.FILTER_MIN_POINTS_IN_GT: 1
+2026-03-22 15:26:54,540   INFO  
+cfg.DATA_CONFIG.DATA_SPLIT = edict()
+2026-03-22 15:26:54,540   INFO  cfg.DATA_CONFIG.DATA_SPLIT.train: train
+2026-03-22 15:26:54,540   INFO  cfg.DATA_CONFIG.DATA_SPLIT.test: val
+2026-03-22 15:26:54,540   INFO  
+cfg.DATA_CONFIG.INFO_PATH = edict()
+2026-03-22 15:26:54,540   INFO  cfg.DATA_CONFIG.INFO_PATH.train: ['nuscenes_infos_1sweeps_train.pkl']
+2026-03-22 15:26:54,540   INFO  cfg.DATA_CONFIG.INFO_PATH.test: ['nuscenes_infos_1sweeps_val.pkl']
+2026-03-22 15:26:54,540   INFO  cfg.DATA_CONFIG.POINT_CLOUD_RANGE: [-50.0, -25.0, -2.5, 50.0, 25.0, 1.5]
+2026-03-22 15:26:54,540   INFO  cfg.DATA_CONFIG.POINT_MERGE_HISFRAME: 0
+2026-03-22 15:26:54,540   INFO  cfg.DATA_CONFIG.DATA_LOAD_PATH: /home/Projects/MASS/datasets/dense_kitti
+2026-03-22 15:26:54,540   INFO  cfg.DATA_CONFIG.DATA_TRAIN_PATH: /home/Projects/MASS/datasets/dense_kitti/train_sample.pkl
+2026-03-22 15:26:54,540   INFO  cfg.DATA_CONFIG.DATA_TEST_PATH: /home/Projects/MASS/datasets/dense_kitti/test_sample.pkl
+2026-03-22 15:26:54,541   INFO  cfg.DATA_CONFIG.BALANCED_RESAMPLING: True
+2026-03-22 15:26:54,541   INFO  
+cfg.DATA_CONFIG.DATA_AUGMENTOR = edict()
+2026-03-22 15:26:54,541   INFO  cfg.DATA_CONFIG.DATA_AUGMENTOR.DISABLE_AUG_LIST: ['placeholder', 'gt_sampling']
+2026-03-22 15:26:54,541   INFO  cfg.DATA_CONFIG.DATA_AUGMENTOR.AUG_CONFIG_LIST: [{'NAME': 'random_world_flip', 'ALONG_AXIS_LIST': ['x', 'y']}, {'NAME': 'random_world_rotation', 'WORLD_ROT_ANGLE': [-0.78539816, 0.78539816]}, {'NAME': 'random_world_scaling', 'WORLD_SCALE_RANGE': [0.95, 1.05]}, {'NAME': 'random_world_translation', 'WORLD_TRANSLATE_RANGE': [5.0, 5.0, 0.05]}]
+2026-03-22 15:26:54,541   INFO  
+cfg.DATA_CONFIG.POINT_FEATURE_ENCODING = edict()
+2026-03-22 15:26:54,541   INFO  cfg.DATA_CONFIG.POINT_FEATURE_ENCODING.encoding_type: absolute_coordinates_encoding
+2026-03-22 15:26:54,541   INFO  cfg.DATA_CONFIG.POINT_FEATURE_ENCODING.used_feature_list: ['x', 'y', 'z', 'intensity', 'trash', 'seg', 'timestamp']
+2026-03-22 15:26:54,541   INFO  cfg.DATA_CONFIG.POINT_FEATURE_ENCODING.src_feature_list: ['x', 'y', 'z', 'intensity', 'trash', 'seg', 'timestamp']
+2026-03-22 15:26:54,541   INFO  cfg.DATA_CONFIG.DATA_PROCESSOR: [{'NAME': 'mask_points_and_boxes_outside_range', 'REMOVE_OUTSIDE_BOXES': True}, {'NAME': 'shuffle_points', 'SHUFFLE_ENABLED': {'train': True, 'test': True}}, {'NAME': 'transform_points_to_voxels', 'VOXEL_SIZE': [0.1, 0.1, 0.5], 'MAX_POINTS_PER_VOXEL': 10, 'MAX_NUMBER_OF_VOXELS': {'train': 50000, 'test': 50000}}]
+2026-03-22 15:26:54,541   INFO  cfg.DATA_CONFIG._BASE_CONFIG_: ./tools/cfgs/dataset_configs/kitti_dataset.yaml
+2026-03-22 15:26:54,541   INFO  
+cfg.MODEL = edict()
+2026-03-22 15:26:54,541   INFO  cfg.MODEL.NAME: PointPillar
+2026-03-22 15:26:54,541   INFO  
+cfg.MODEL.VFE = edict()
+2026-03-22 15:26:54,541   INFO  cfg.MODEL.VFE.NAME: PillarVFE
+2026-03-22 15:26:54,541   INFO  cfg.MODEL.VFE.WITH_DISTANCE: False
+2026-03-22 15:26:54,541   INFO  cfg.MODEL.VFE.USE_ABSLOTE_XYZ: True
+2026-03-22 15:26:54,541   INFO  cfg.MODEL.VFE.USE_NORM: True
+2026-03-22 15:26:54,541   INFO  cfg.MODEL.VFE.NUM_FILTERS: [64]
+2026-03-22 15:26:54,541   INFO  
+cfg.MODEL.MAP_TO_BEV = edict()
+2026-03-22 15:26:54,541   INFO  cfg.MODEL.MAP_TO_BEV.NAME: PointPillarScatter
+2026-03-22 15:26:54,542   INFO  cfg.MODEL.MAP_TO_BEV.NUM_BEV_FEATURES: 64
+2026-03-22 15:26:54,542   INFO  cfg.MODEL.MAP_TO_BEV.VOXEL_DIM_NUM: [1000, 500, 8]
+2026-03-22 15:26:54,542   INFO  
+cfg.OPTIMIZATION = edict()
+2026-03-22 15:26:54,542   INFO  cfg.OPTIMIZATION.BATCH_SIZE_PER_GPU: 1
+2026-03-22 15:26:54,542   INFO  cfg.OPTIMIZATION.NUM_EPOCHS: 24
+2026-03-22 15:26:54,542   INFO  cfg.OPTIMIZATION.OPTIMIZER: OneCycle_with_WarmupLR
+2026-03-22 15:26:54,542   INFO  cfg.OPTIMIZATION.LR: 0.003
+2026-03-22 15:26:54,542   INFO  cfg.OPTIMIZATION.WEIGHT_DECAY: 0.001
+2026-03-22 15:26:54,542   INFO  cfg.OPTIMIZATION.MOMENTUM: 0.9
+2026-03-22 15:26:54,542   INFO  cfg.OPTIMIZATION.MOMS: [0.95, 0.85]
+2026-03-22 15:26:54,542   INFO  cfg.OPTIMIZATION.PCT_START: 0.1
+2026-03-22 15:26:54,542   INFO  cfg.OPTIMIZATION.DIV_FACTOR: 10
+2026-03-22 15:26:54,542   INFO  cfg.OPTIMIZATION.DECAY_STEP_LIST: [4, 8, 12, 16, 20]
+2026-03-22 15:26:54,542   INFO  cfg.OPTIMIZATION.LR_DECAY: 0.1
+2026-03-22 15:26:54,542   INFO  cfg.OPTIMIZATION.LR_CLIP: 1e-07
+2026-03-22 15:26:54,542   INFO  cfg.OPTIMIZATION.LR_WARMUP: True
+2026-03-22 15:26:54,542   INFO  cfg.OPTIMIZATION.WARMUP_EPOCH: 1
+2026-03-22 15:26:54,542   INFO  cfg.OPTIMIZATION.GRAD_NORM_CLIP: 10
+2026-03-22 15:26:54,542   INFO  cfg.OPTIMIZATION.BETA1: 0.9
+2026-03-22 15:26:54,542   INFO  cfg.OPTIMIZATION.BETA2: 0.999
+2026-03-22 15:26:54,542   INFO  cfg.OPTIMIZATION.EPS: 1e-08
+2026-03-22 15:26:54,542   INFO  cfg.TAG: test_pillarnet_128
+2026-03-22 15:26:54,543   INFO  cfg.EXP_GROUP_PATH: tools/cfgs/kitti_models
+2026-03-22 15:26:57,402   INFO  ==> Loading parameters from checkpoint /home/Projects/DensePillar/logs/model/kitti_models/test_pillarnet_128/128_3e3_freqweight/ckpt/checkpoint_epoch_11.pth to GPU
+2026-03-22 15:26:58,055   INFO  ==> Checkpoint trained from version: pcdet+0.3.0+0000000
+2026-03-22 15:26:58,597   INFO  ==> Done (loaded 244/244)
+2026-03-22 15:26:58,637   INFO  *************** EPOCH 11 EVALUATION *****************
+2026-03-22 16:11:55,988   INFO  iou_vehicle: 0.715532
+2026-03-22 16:11:55,989   INFO  iou_person: 0.128166
+2026-03-22 16:11:55,989   INFO  iou_two-wheel: 0.079607
+2026-03-22 16:11:55,989   INFO  iou_rider: 0.157334
+2026-03-22 16:11:55,989   INFO  iou_road: 0.901592
+2026-03-22 16:11:55,989   INFO  iou_sidewalk: 0.665019
+2026-03-22 16:11:55,989   INFO  iou_otherground: 0.341522
+2026-03-22 16:11:55,989   INFO  iou_building: 0.713578
+2026-03-22 16:11:55,989   INFO  iou_object: 0.214615
+2026-03-22 16:11:55,989   INFO  iou_vegetation: 0.699977
+2026-03-22 16:11:55,989   INFO  iou_trunk: 0.248759
+2026-03-22 16:11:55,990   INFO  iou_terrain: 0.734395
+2026-03-22 16:11:55,990   INFO  miou: 0.466675
+2026-03-22 16:11:55,990   INFO  ****************Evaluation done.*****************
+2026-03-22 16:11:55,993   INFO  Epoch 11 has been evaluated

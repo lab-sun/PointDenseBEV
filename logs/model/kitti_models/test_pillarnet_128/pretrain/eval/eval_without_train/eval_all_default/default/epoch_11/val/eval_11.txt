@@ -1,0 +1,15 @@
+******************eval_whole_dataset******************
+iou_vehicle: 0.715532
+iou_person: 0.128166
+iou_two-wheel: 0.079607
+iou_rider: 0.157334
+iou_road: 0.901592
+iou_sidewalk: 0.665019
+iou_otherground: 0.341522
+iou_building: 0.713578
+iou_object: 0.214615
+iou_vegetation: 0.699977
+iou_trunk: 0.248759
+iou_terrain: 0.734395
+miou: 0.466675
+****************************************************
