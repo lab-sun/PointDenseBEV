@@ -1,8 +1,9 @@
 # PointDenseBEV: Dense Semantic Bird’s-Eye-View Map Generation
 
-> **Dense Semantic Bird’s-Eye-View Map Generation from Sparse LiDAR Point Clouds via Distribution-Aware Feature Fusion**
+> This is the code implementation of IROS2025 article **Dense Semantic Bird’s-Eye-View Map Generation from Sparse LiDAR Point Clouds via Distribution-Aware Feature Fusion**
 
 [![PointDenseBEV Demonstration](https://img.youtube.com/vi/hv8dzhZIFgk/0.jpg)](https://youtu.be/hv8dzhZIFgk)
+
 *Click the image above to watch the demonstration video.*
 
 ## 📖 Overview
