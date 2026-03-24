@@ -133,6 +133,23 @@ sh tools/test.sh
 
 ---
 
+## 📚 Citation
+
+If you find our work helpful, please cite:
+
+```
+@INPROCEEDINGS{li2025dense,
+  author={Jinsong Li and Kunyu Peng and Yuxiang Sun},
+  booktitle={2025 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)}, 
+  title={Dense Semantic Bird-Eye-View Map Generation from Sparse LiDAR Point Clouds via Distribution-aware Feature Fusion}, 
+  year={2025},
+  volume={},
+  number={},
+  pages={4123-4129},
+  doi={10.1109/IROS60139.2025.11246382}}
+```
+---
+
 ## 🙏 Acknowledgements
 Special thanks to:
 - **[OpenPCDet](https://github.com/open-mmlab/OpenPCDet)** for the highly extensible 3D object detection codebase.
