@@ -15,7 +15,7 @@ Extensive experiments on the **SemanticKITTI** dataset demonstrate that our meth
 
 ### 🔗 Resources
 - **Base Framework:** Built on top of [OpenPCDet](https://github.com/open-mmlab/OpenPCDet).
-- **Project Files & Dataset:** [Download via OneDrive](https://1drv.ms/f/c/e066035012049ad0/IgAZUSPHZCS1S4ZxWTp8f6CYAVgT0lJ-kSyEAMLHotsKsAE?e=zLYiQf)
+- **Project Files & Dataset:** [Download via OneDrive](https://1drv.ms/f/c/e066035012049ad0/IgAZUSPHZCS1S4ZxWTp8f6CYAVgT0lJ-kSyEAMLHotsKsAE?e=zLYiQf) or [Download via NAS](https://nas.labsun.org/downloads/2025_iros_pointdensebev/)
 
 ---
 
